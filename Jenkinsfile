@@ -27,10 +27,14 @@ pipeline
 	
 	post {
 	success {
-	emailext(emailext body: 'Build_3.5V Success', recipientProviders: [developers()], subject: 'Build_3.5V Success', to: 'baji.g@ecartag.com')
+	emailext(subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Development Promoted to Master",
+            body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Development Promoted to Master":</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""",to: 'baji.g@ecartag.com')
 	}
 	Faiure {
-	emailext(emailext body: 'Build_3.5V Faile', recipientProviders: [developers()], subject: 'Build_3.5V Faile', to: 'baji.g@ecartag.com')
+	emailext( subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
+            body: """<p>'${env.JOB_NAME} [${env.BUILD_NUMBER}]' Failed!":</p>
+            <p>Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;</p>""", to: 'baji.g@ecartag.com')
 	}
 	}
 	}
