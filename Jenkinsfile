@@ -21,7 +21,7 @@ pipeline
 	 }
   stage('Publish Results'){
       steps{
-    junit 'gameoflife-web/target/surefire-reports/*.xml' , archive 'gameoflife-web/target/*.war'
+    junit 'gameoflife-web/target/surefire-reports/*.xml'
 	}
 	}
 	}
