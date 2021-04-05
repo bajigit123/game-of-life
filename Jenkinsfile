@@ -24,6 +24,13 @@ pipeline
     junit 'gameoflife-web/target/surefire-reports/*.xml'
 	}
 	}
+
+       stage('Articfacts'){
+      steps{
+    archive 'gameoflife-web/target/*.war'
+	}
+	}
+
 	}
 	
 	post {
